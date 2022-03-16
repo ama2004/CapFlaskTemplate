@@ -19,6 +19,8 @@ class User(UserMixin, Document):
     password_hash = StringField()
     fname = StringField()
     lname = StringField()
+    role = StringField()
+    number = StringField()
     email = EmailField()
     image = FileField()
     
