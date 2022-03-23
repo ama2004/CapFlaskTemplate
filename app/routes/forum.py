@@ -92,12 +92,14 @@ def postEdit(postID):
         editPost.update(
             subject = form.subject.data,
             content = form.content.data,
+            goal = form.goal.data,
             modifydate = dt.datetime.utcnow
         )
         return redirect(url_for('post',postID=postID))
 
     form.subject.data = editPost.subject
     form.content.data = editPost.content
+    form.goal.data = editPost.goal
 
     return render_template('postform.html',form=form)
 
@@ -110,7 +112,8 @@ def commentNew(postID):
         newComment = Comment(
             author = current_user.id,
             post = postID,
-            content = form.content.data
+            content = form.content.data, 
+            goal = form.goal.data
         )
         newComment.save()
         return redirect(url_for('post',postID=postID))
@@ -128,11 +131,13 @@ def commentEdit(commentID):
     if form.validate_on_submit():
         editComment.update(
             content = form.content.data,
+            goal = form.goal.data,
             modifydate = dt.datetime.utcnow
         )
         return redirect(url_for('post',postID=editComment.post.id))
 
     form.content.data = editComment.content
+    form.goal.data = editComment.goal
 
     return render_template('commentform.html',form=form,post=post)   
 

@@ -14,6 +14,18 @@ import jwt
 from time import time
 from bson.objectid import ObjectId
 
+class Admin():
+    username = StringField()
+    email = EmailField()
+    # same password for our group (how to set password the same for all admin)
+    # set role to Admin
+    # role = StringField()
+    # password = StringField()
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+        # password = 1234
+
+
 class User(UserMixin, Document):
     username = StringField()
     password_hash = StringField()
