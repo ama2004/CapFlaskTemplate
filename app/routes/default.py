@@ -18,3 +18,6 @@ def formsyoungpeople():
 def formsorganizations():
     return render_template('formsorganizations.html')  
 
+@app.route('/stemresources')
+def stemresources():
+    return render_template('stemresources.html')  
