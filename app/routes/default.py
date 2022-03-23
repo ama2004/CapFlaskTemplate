@@ -10,6 +10,10 @@ def index():
 def aboutus():
     return render_template('aboutus.html')
 
+@app.route('/stemoverview')
+def stemoverview():
+    return render_template('stemoverview.html')  
+
 @app.route('/formsyoungpeople')
 def formsyoungpeople():
     return render_template('formsyoungpeople.html')  
@@ -18,3 +22,6 @@ def formsyoungpeople():
 def formsorganizations():
     return render_template('formsorganizations.html')  
 
+@app.route('/stemresources')
+def stemresources():
+    return render_template('stemresources.html')  
