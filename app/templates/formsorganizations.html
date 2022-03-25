@@ -4,24 +4,30 @@
 
 {% block body %}
 
+<H1>Forms for Organizations</H1>
 
-<H1>Form for organizations</H1>
+<form>
+    Enter Organization Name:
+     <input type="text" name="Fname">
+     </form>
+     <form>
+        Enter Organization Website:
+         <input type="text" name="Fname">
+         </form>
+         <form>
+            Enter Organization Address:
+             <input type="text" name="Fname">
+             </form>
 
-<H3>Enter Name:</H3>
-<H3>Enter Email:</H3>
-<H3>Enter Phone Number:</H3>
+         <p>Please enter a summary of your organization. What is your mission? What demographics do you target?
+         </p>
+         <form>
+             <input type="text">
+             </form>
 
-
-<H3>What part of STEM are you planning on pursuing?</H3>
-
-<H3>Gender:</H3>
-
-<H3>Race:</H3>
-
-<H3>Education Level:</H3>
-
-<H3>Do you want to particpate in a mentorship program?</H3>
-
-<H
-
+             <p>Do you want to participate in a mentorship program?</p>
+             <select name="YesorNo" id="YesorNo">
+               <option value="Yes">Yes</option>
+               <option value="No">No</option>
+             </select>   
 {% endblock %}

@@ -4,5 +4,71 @@
 
 {% block body %}
 
-<p>Form for young people</p>
+
+<H1>Form for Young People</H1>
+
+<form>
+   Enter Name :
+    <input type="text" name="Fname">
+    </form>
+    
+    <form>
+        Enter Email :
+         <input type="text" name="Fname">
+         </form>
+
+         <form>
+            Enter Phone Number :
+             <input type="text" name="Fname">
+             </form>
+
+
+<p>What part of STEM are you planning on pursuing?</p>
+<select name="STEM" id="STEM">
+    <option value="Science">Science</option>
+    <option value="Technology">Technology</option>
+    <option value="Engineering">Engineering</option>
+    <option value="Mathematics">Mathematics</option>
+  </select>
+
+<p>What gender do you identify with?:</p>
+<select name="Gender" id="Gender">
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Transgender">Transgender</option>
+    <option value="Binary">Binary</option>
+    <option value="Nonbinary">Nonbinary</option>
+  </select>
+
+<p>What is your race?:</p>
+<select name="Race" id="Race">
+    <option value="White">White</option>
+    <option value="Black or African American">Black or African American</option>
+    <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+    <option value="Asian">Asian</option>
+    <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+  </select>
+
+<p>Education Level:</p>
+<select name="Educationlevel" id="Educationlevel">
+    <option value="9th grade">9th grade</option>
+    <option value="10th grade">10th grade</option>
+    <option value="11th grade">11th grade</option>
+    <option value="12th grade">12th grade</option>
+    <option value="Below high school education level">Below high school</option>
+    <option value="Above high school education level">Above high school</option>
+  </select>
+
+<p>Do you want to participate in a mentorship program?</p>
+<select name="YesorNo" id="YesorNo">
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+  <option value="Maybe">Maybe</option>
+</select>
+
+<p>Do you have any resources you are willing to provide?</p>
+<form>
+    <input type="text">
+    </form>
+
 {% endblock %}
