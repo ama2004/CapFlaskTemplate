@@ -2,11 +2,10 @@
 
 {% block body %}
 
-<p>resources page</p>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for organizations..">
 
-
-<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-    <thead>
+<table id="myTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead class="header">
       <tr>
         <th class="th-sm">Organization</th>
         <th class="th-sm">Description</th>
@@ -15,54 +14,40 @@
     </thead>
     <tbody>
       <tr>
-        <td>Tiger Nixon</td>
-        <td>System Architect</td>
-        <td>Edinburgh</td>
-        <td>61</td>
-        <td>2011/04/25</td>
-        <td>$320,800</td>
-      </tr>
-      <tr>
-        <td>Garrett Winters</td>
-        <td>Accountant</td>
-        <td>Tokyo</td>
-        <td>63</td>
-        <td>2011/07/25</td>
-        <td>$170,750</td>
-      </tr>
-      <tr>
-        <td>Ashton Cox</td>
-        <td>Junior Technical Author</td>
-        <td>San Francisco</td>
-        <td>66</td>
-        <td>2009/01/12</td>
-        <td>$86,000</td>
+        <td>sdhgklad;jfkdls;a</td>
+        <td>sadhgkla;jfk;sa</td>
+        <td>shdgkl;ajfkdl;sa</td>
       </tr>
     </tbody>
   </table>
 
-  <style>
-    table.dataTable thead .sorting:after,
-    table.dataTable thead .sorting:before,
-    table.dataTable thead .sorting_asc:after,
-    table.dataTable thead .sorting_asc:before,
-    table.dataTable thead .sorting_asc_disabled:after,
-    table.dataTable thead .sorting_asc_disabled:before,
-    table.dataTable thead .sorting_desc:after,
-    table.dataTable thead .sorting_desc:before,
-    table.dataTable thead .sorting_desc_disabled:after,
-    table.dataTable thead .sorting_desc_disabled:before {
-        bottom: .5em;
+
+<script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
     }
-  </style>
-  <script>
-    $(document).ready(function () {
-        $('#dtBasicExample').DataTable();
-        $('.dataTables_length').addClass('bs-select');
-    });
-    $().DataTables()
+  }
   </script>
 
+
 <!-- https://mdbootstrap.com/docs/b4/jquery/tables/search/ -->
+<!-- https://www.w3schools.com/howto/howto_js_filter_table.asp -->
 
 {% endblock %}
