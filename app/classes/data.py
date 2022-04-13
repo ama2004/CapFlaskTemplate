@@ -14,8 +14,6 @@ import jwt
 from time import time
 from bson.objectid import ObjectId
 
-
-
 class User(UserMixin, Document):
     username = StringField()
     password_hash = StringField()
@@ -65,6 +63,21 @@ class Comment(Document):
     # comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
     content = StringField()
     goal = StringField()
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+# attempt
+class Organization(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    name = StringField()
+    website = StringField()
+    address = StringField()
+    summary = StringField()
+    mentorship = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 

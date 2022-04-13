@@ -2,6 +2,62 @@
 
 {% block body %}
 
-<p>resources page</p>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for organizations..">
+
+<table id="myTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead class="header">
+      <tr>
+        <th class="th-sm">Organization</th>
+        <th class="th-sm">Description</th>
+        <th class="th-sm">Links</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Resource 1</td>
+        <td>something</td>
+        <td>link</td>
+      </tr>
+      <tr>
+        <td>Resource 2</td>
+        <td>stuff</td>
+        <td>link</td>
+      </tr>
+      <tr>
+        <td>Resource 3</td>
+        <td>other stuff</td>
+        <td>link</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+  </script>
+
+
+<!-- https://mdbootstrap.com/docs/b4/jquery/tables/search/ -->
+<!-- https://www.w3schools.com/howto/howto_js_filter_table.asp -->
 
 {% endblock %}
