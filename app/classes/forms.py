@@ -64,9 +64,16 @@ class ProfileForm(FlaskForm):
 
 class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
-    content = TextAreaField('Post', validators=[DataRequired()])
+    content = TextAreaField('Content', validators=[DataRequired()])
     goal = TextAreaField('Goal', validators=[DataRequired()])
     submit = SubmitField('Post')
+
+class Organization(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    email = EmailField('Email', validators=[DataRequired(), Email()])
+    content = TextAreaField('Post', validators=[DataRequired()])
+    goal = TextAreaField('Goal', validators=[DataRequired()])
+    submit = SubmitField('Organization')
 
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
