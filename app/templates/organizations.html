@@ -1,0 +1,70 @@
+<!-- attempt -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-4">
+        <h1 class="display-1">All Organizations</h1>
+    </div>
+    <div class="col">
+        <a href="/organization/new" class="btn btn-primary btn-sm mt-5" role="button">New Organization</a>
+    </div>
+</div>
+
+{% if organizations %}
+    {% for organization in organizationss %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Date</h3>
+                {% endif %}
+
+                <a href="/post/{{post.id}}">
+                    {{moment(organization.createdate).calendar()}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">User</h3>
+                {% endif %}
+                {{organization.author.username}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Name</h3>
+                {% endif %}
+                {{organization.name}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Website</h3>
+                {% endif %}
+                {{organization.website}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Address</h3>
+                {% endif %}
+                {{organization.address}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Summary</h3>
+                {% endif %}
+                {{organization.summary}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Mentorship</h3>
+                {% endif %}
+                {{organization.mentorship}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h1>No Posts</h1>
+{% endif %}
+
+{% endblock %}

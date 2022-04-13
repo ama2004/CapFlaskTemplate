@@ -71,3 +71,18 @@ class Comment(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+# attempt
+class Organization(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    name = StringField()
+    website = StringField()
+    address = StringField()
+    summary = StringField()
+    mentorship = StringField()
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }

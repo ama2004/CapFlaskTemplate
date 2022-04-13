@@ -71,3 +71,13 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
+
+
+#attempt
+class OrganizationForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    website = TextAreaField('Website', validators=[DataRequired()])
+    address = TextAreaField('Address', validators=[DataRequired()])
+    summary = TextAreaField('Summary', validators=[DataRequired()])
+    mentorship = SelectField('Mentorsip',choices=[("Yes","Yes"),("No","No")])
+    submit = SubmitField('Post')
