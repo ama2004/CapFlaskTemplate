@@ -14,8 +14,6 @@ import jwt
 from time import time
 from bson.objectid import ObjectId
 
-
-
 class User(UserMixin, Document):
     username = StringField()
     password_hash = StringField()
