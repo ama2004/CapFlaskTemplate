@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if organization %}
+
+{{moment(organization.createdate).calendar()}} by {{organization.author.username}}
+{% if organization.modifydate %}
+modified {{moment(organization.modifydate).calendar()}}
+{% endif %}
+<br>
+{% if organization.author == current_user %}
+<a data-toggle="tooltip" data-placement="top" title="Delete Post" href="/organization/delete/{{organization.id}}">
+    <img width="40" class="bottom-image" src="/static/delete.png">
+</a>
+<a data-toggle="tooltip" data-placement="top" title="Edit Post" href="/organization/edit/{{organization.id}}">
+    <img width="40" class="bottom-image" src="/static/edit.png">
+</a>
+{% endif %}
+
+<h1 class="display-5">{{organization.name}}</h1>
+<p class="fs-3 text-break">
+    {% if organization.author.image %}
+    <img width="120" class="img-thumbnail float-start me-2"
+        src="data:image;base64,{{base64encode(organization.author.image.read())}}">
+    {% endif %}
+    {{organization.website}}
+    <br></br>
+    {{organization.address}}
+</p>
+{% else %}
+<h1 class="display-5">No Post</h1>
+{% endif %}
+
+{% endblock %}

@@ -23,7 +23,7 @@ import datetime as dt
 def organizationList():
     # This retrieves all of the 'posts' that are stored in MongoDB and places them in a
     # mongoengine object as a list of dictionaries name 'posts'.
-    posts = Organization.objects()
+    organizations = Organization.objects()
     # This renders (shows to the user) the posts.html template. it also sends the posts object 
     # to the template as a variable named posts.  The template uses a for loop to display
     # each post.
@@ -61,4 +61,52 @@ def organizationNew():
 
         return redirect(url_for('organization',organizationID=newOrganization.id))
 
-    return render_template('postform.html',form=form)
+    return render_template('organizationform.html',form=form)
+
+@app.route('/organization/<organizationID>')
+@login_required
+def organization(organizationID):
+    organization = Organization.objects.get(id=organizationID)
+
+    return render_template('organization.html', organization=organization)
+
+@app.route('/organization/delete/<organizationID>')
+@login_required
+def organizationDelete(organizationID):
+    deleteOrganization = Organization.objects.get(id=organizationID)
+    if current_user == deleteOrganization.author:
+        deleteOrganization.delete()
+        flash('The organization was deleted.')
+    else:
+        flash("You can't delete an organization you don't own.")
+    organizations = Organization.objects()  
+    return render_template('organizations.html',organizations=organizations)
+
+
+
+@app.route('/organization/edit/<organizationID>', methods=['GET', 'POST'])
+@login_required
+def organizationEdit(organizationID):
+    editOrganization = Organization.objects.get(id=organizationID)
+    if current_user != editOrganization.author:
+        flash("You can't edit a post you don't own.")
+        return redirect(url_for('organization',organizationID=organizationID))
+    form = OrganizationForm()
+    if form.validate_on_submit():
+        editOrganization.update(
+            name = form.name.data,
+            website = form.website.data,
+            address = form.address.data,
+            summary = form.summary.data,
+            mentorship = form.mentorship.data,
+            modifydate = dt.datetime.utcnow
+        )
+        return redirect(url_for('organization',organizationID=organizationID))
+
+    form.name.data = editOrganization.name
+    form.website.data = editOrganization.website
+    form.address.data = editOrganization.address
+    form.summary.data = editOrganization.summary
+    form.mentorship.data = editOrganization.mentorship
+
+    return render_template('organizationform.html',form=form)
