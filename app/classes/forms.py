@@ -59,6 +59,11 @@ class ProfileForm(FlaskForm):
     lname = StringField('Last Name', validators=[DataRequired()]) 
     role = SelectField('Role',choices=[("Organization","Organization"),("Young Person","Young Person")])
     number = StringField('Number', validators=[DataRequired()])
+    gender = SelectField('Gender',choices=[("Male","Male"),("Female","Female"),("Transgender","Transgender"),("Binary","Binary"),("Nonbinary","Nonbinary"), ("Other", "Other"), ("N/A or prefer not to disclose" ,"N/A or prefer not to disclose")])
+    race = SelectField('Race',choices=[("White","White"),("Black or African American","Black or African American"),("Asian","Asian"),("American Indian or Alaska Native","American Indian or Alaska Native"),("Native Hawaiian or Other Pacific Islander","Native Hawaiian or Other Pacific Islander"), ("Other", "Other"), ("N/A or prefer not to disclose", "N/A or prefer not to disclose")])
+    education = SelectField('Education',choices=[("Middle School" , "Middle School"), ("High School","High School"),("College","College"), ("N/A", "N/A")])
+    stem = SelectField('STEM',choices=[("Science","Science"),("Technology","Technology"),("Engineering","Engineering"),("Math","Math"),("Undecided","Undecided")])
+    mentorship = SelectField('Mentorship',choices=[("Yes","Yes"),("No","No")])
     image = FileField("Image") 
     submit = SubmitField('Post')
 

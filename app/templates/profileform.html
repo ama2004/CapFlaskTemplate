@@ -43,6 +43,41 @@
             {% endfor %}
         </p>
         <p>
+            {{ form.gender.label }}<br>
+            {{ form.gender() }}<br>
+            {% for error in form.gender.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.race.label }}<br>
+            {{ form.race() }}<br>
+            {% for error in form.race.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.education.label }}<br>
+            {{ form.education() }}<br>
+            {% for error in form.education.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.mentorship.label }}<br>
+            {{ form.mentorship() }}<br>
+            {% for error in form.mentorship.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.stem.label }}<br>
+            {{ form.stem() }}<br>
+            {% for error in form.stem.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
             {{ form.image.label }}<br>
             {% if current_user.image %}
                 <img class="img-thumbnail" width="100" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>

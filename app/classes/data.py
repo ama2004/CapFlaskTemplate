@@ -22,6 +22,11 @@ class User(UserMixin, Document):
     role = StringField()
     number = StringField()
     email = EmailField()
+    gender = StringField()
+    race = StringField()
+    stem = StringField()
+    education = StringField()
+    mentorship = StringField()
     image = FileField()
     
     def set_password(self, password):

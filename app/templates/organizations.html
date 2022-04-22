@@ -11,9 +11,12 @@
     </div>
 </div>
 
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for organizations..">
+
+
 {% if organizations %}
     {% for organization in organizations %}
-        <div class="row border-bottom">
+        <div id="myTable" class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-9">Date</h3>
@@ -23,12 +26,18 @@
                     {{moment(organization.createdate).calendar()}}
                 </a>
             </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-9">Name</h3>
-                {% endif %}
-                {{organization.name}}
-            </div>
+
+
+            <tr>
+                <div id="organizationName" class="col">
+                    {% if loop.index == 1 %}
+                        <h3 class="display-9">Name</h3>
+                    {% endif %}
+                    {{organization.name}}
+                </div>
+            </tr>
+            
+
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-9">Website</h3>
@@ -58,5 +67,31 @@
 {% else %}
     <h1>No Organizations</h1>
 {% endif %}
+
+
+<script>
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("organizationName");
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+
 
 {% endblock %}
