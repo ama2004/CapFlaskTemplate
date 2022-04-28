@@ -91,5 +91,6 @@ class OrganizationForm(FlaskForm):
     website = TextAreaField('Website', validators=[DataRequired()])
     address = TextAreaField('Address', validators=[DataRequired()])
     summary = TextAreaField('Summary', validators=[DataRequired()])
+    keywords = TextAreaField('Keywords', validators=[DataRequired()])
     mentorship = SelectField('Mentorsip',choices=[("Yes","Yes"),("No","No")])
     submit = SubmitField('Post')
