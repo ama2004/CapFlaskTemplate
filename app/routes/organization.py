@@ -51,6 +51,7 @@ def organizationNew():
             website = form.website.data,
             address = form.address.data,
             summary = form.summary.data,
+            keywords = form.keywords.data,
             mentorship = form.mentorship.data,
             author = current_user.id,
             # This sets the modifydate to the current datetime.
@@ -98,6 +99,7 @@ def organizationEdit(organizationID):
             website = form.website.data,
             address = form.address.data,
             summary = form.summary.data,
+            keywords = form.keywords.data,
             mentorship = form.mentorship.data,
             modifydate = dt.datetime.utcnow
         )
@@ -107,6 +109,7 @@ def organizationEdit(organizationID):
     form.website.data = editOrganization.website
     form.address.data = editOrganization.address
     form.summary.data = editOrganization.summary
+    form.keywords.data = editOrganization.keywords
     form.mentorship.data = editOrganization.mentorship
 
     return render_template('organizationform.html',form=form)

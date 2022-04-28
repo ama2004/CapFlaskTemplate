@@ -58,6 +58,12 @@
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
+                    <h3 class="display-9">Keywords</h3>
+                {% endif %}
+                {{organization.keywords}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
                     <h3 class="display-9">Mentorship</h3>
                 {% endif %}
                 {{organization.mentorship}}

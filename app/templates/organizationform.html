@@ -38,6 +38,14 @@
                 {% endfor %}
             </p>
             <p>
+                {{ form.keywords.label }} <br>
+                {{ form.keywords(cols=64, rows=10) }}
+                <!--List the errors for this field-->
+                {% for error in form.keywords.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
                 {{ form.mentorship.label }} <br>
                 {{ form.mentorship(cols=64, rows=10) }}
                 <!--List the errors for this field-->

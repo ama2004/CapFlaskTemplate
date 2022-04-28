@@ -82,6 +82,7 @@ class Organization(Document):
     website = StringField()
     address = StringField()
     summary = StringField()
+    keywords = StringField()
     mentorship = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
