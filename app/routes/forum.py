@@ -46,6 +46,7 @@ def postNew():
             subject = form.subject.data,
             content = form.content.data,
             goal = form.goal.data,
+            review = form.review.data,
             author = current_user.id,
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
@@ -93,6 +94,7 @@ def postEdit(postID):
             subject = form.subject.data,
             content = form.content.data,
             goal = form.goal.data,
+            review = form.review.data,
             modifydate = dt.datetime.utcnow
         )
         return redirect(url_for('post',postID=postID))
@@ -100,6 +102,7 @@ def postEdit(postID):
     form.subject.data = editPost.subject
     form.content.data = editPost.content
     form.goal.data = editPost.goal
+    form.review.data = editPost.review
 
     return render_template('postform.html',form=form)
 
@@ -113,7 +116,8 @@ def commentNew(postID):
             author = current_user.id,
             post = postID,
             content = form.content.data, 
-            goal = form.goal.data
+            goal = form.goal.data,
+            review = form.review.data
         )
         newComment.save()
         return redirect(url_for('post',postID=postID))
@@ -132,12 +136,14 @@ def commentEdit(commentID):
         editComment.update(
             content = form.content.data,
             goal = form.goal.data,
+            review = form.review.data,
             modifydate = dt.datetime.utcnow
         )
         return redirect(url_for('post',postID=editComment.post.id))
 
     form.content.data = editComment.content
     form.goal.data = editComment.goal
+    form.review.data = editComment.review
 
     return render_template('commentform.html',form=form,post=post)   
 
