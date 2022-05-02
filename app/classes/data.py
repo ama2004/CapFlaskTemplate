@@ -54,6 +54,7 @@ class Post(Document):
     subject = StringField()
     content = StringField()
     goal = StringField()
+    rating = StringField()
     review = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
