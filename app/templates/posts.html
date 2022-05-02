@@ -23,7 +23,7 @@
                     {{moment(post.createdate).calendar()}}
                 </a>
             </div>
-            <div class="col-2">
+            <div class="col">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">User</h3>
                 {% endif %}
@@ -35,7 +35,7 @@
                 {% endif %}
                 {{post.subject}}
             </div>
-            <div class="col">
+            <div class="col-2">
                 {% if loop.index == 1 %}
                     <h3 class="display-5">Goal</h3>
                 {% endif %}
@@ -47,7 +47,7 @@
                 {% endif %}
                 {{post.rating}}
             </div>
-            <div class="col">
+            <div class="col-4">
                 {% if loop.index == 1 %}
                     <h3 class="display-5">Review</h3>
                 {% endif %}
