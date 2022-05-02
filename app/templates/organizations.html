@@ -26,18 +26,12 @@
                     {{moment(organization.createdate).calendar()}}
                 </a>
             </div>
-
-
-            <tr>
                 <div id="organizationName" class="col">
                     {% if loop.index == 1 %}
                         <h3 class="display-9">Name</h3>
                     {% endif %}
                     {{organization.name}}
                 </div>
-            </tr>
-            
-
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-9">Website</h3>
