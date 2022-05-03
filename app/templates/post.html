@@ -3,7 +3,7 @@
 {% block body %}
 
 {% if post %}
-
+<body style="background-color:#F7E5E8">
 {{moment(post.createdate).calendar()}} by {{post.author.username}}
 {% if post.modifydate %}
 modified {{moment(post.modifydate).calendar()}}
@@ -62,5 +62,5 @@ modified {{moment(post.modifydate).calendar()}}
 {% else %}
 <h1 class="display-5">No Post</h1>
 {% endif %}
-
+</body>
 {% endblock %}
