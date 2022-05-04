@@ -17,7 +17,7 @@
 {% if organizations %}
 {% for organization in organizations %}
 <div id="myTable" class="row border-bottom">
-    <div class="col-2">
+    <div class="col">
         {% if loop.index == 1 %}
         <h3 class="display-9">Date</h3>
         {% endif %}
@@ -29,38 +29,37 @@
         {% if loop.index == 1 %}
         <h3 class="display-9">Name</h3>
         {% endif %}
-        {{organization.name}}
+        <p style="float: left;">{{organization.name}}</p>
     </div>
     <div class="col">
         {% if loop.index == 1 %}
         <h3 class="display-9">Website</h3>
         {% endif %}
-        <a href="{{organization.website}}">Link to Organization</a>
-        <!-- {{organization.website}} -->
+        <a href="{{organization.website}}" style="float: left;">Link to Organization</a>
     </div>
     <div class="col">
         {% if loop.index == 1 %}
         <h3 class="display-9">Address</h3>
         {% endif %}
-        {{organization.address}}
+        <p style="float: left;">{{organization.address}}</p>
     </div>
-    <div class="col">
+    <div class="col-2">
         {% if loop.index == 1 %}
         <h3 class="display-9">Summary</h3>
         {% endif %}
-        {{organization.summary}}
+        <p style="float: left;">{{organization.summary}}</p>
     </div>
     <div class="col">
         {% if loop.index == 1 %}
         <h3 class="display-9">Keywords</h3>
         {% endif %}
-        {{organization.keywords}}
+        <p style="float: left;">{{organization.keywords}}</p>
     </div>
     <div class="col">
         {% if loop.index == 1 %}
         <h3 class="display-9">Mentorship</h3>
         {% endif %}
-        {{organization.mentorship}}
+        <p style="float: left;">{{organization.mentorship}}</p>
     </div>
 </div>
 {% endfor %}
