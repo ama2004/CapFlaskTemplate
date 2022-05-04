@@ -54,6 +54,8 @@ class Post(Document):
     subject = StringField()
     content = StringField()
     goal = StringField()
+    rating = StringField()
+    review = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 
@@ -68,6 +70,7 @@ class Comment(Document):
     # comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
     content = StringField()
     goal = StringField()
+    review = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block body %}
+<body style="background-color:#F7E5E8" >
         <h1></h1>
 
         <form method=post>
@@ -13,14 +14,13 @@
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
-                {{ form.content.label }} <br>
+
+                <p>{{ form.content.label }} <br>
                 {{ form.content(cols=64, rows=10) }}
-                <!--List the errors for this field-->
                 {% for error in form.content.errors %}
                     <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
+                {% endfor %}</p>
+            </p> 
             <p>
                 {{ form.goal.label }} <br>
                 {{ form.goal(cols=64, rows=10) }}
@@ -30,8 +30,24 @@
                 {% endfor %}
             </p>
             <p>
+                {{ form.rating.label }} <br>
+                {{ form.rating(cols=64, rows=10) }}
+                <!--List the errors for this field-->
+                {% for error in form.rating.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.review.label }} <br>
+                {{ form.review(cols=64, rows=10) }}
+                <!--List the errors for this field-->
+                {% for error in form.review.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
                 {{form.submit()}}
             </p>
         </form>
-        
+</body>        
 {% endblock %}

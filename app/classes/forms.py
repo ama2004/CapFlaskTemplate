@@ -71,6 +71,8 @@ class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     goal = TextAreaField('Goal', validators=[DataRequired()])
+    rating = SelectField('Rating',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
+    review = TextAreaField('Review', validators=[DataRequired()])
     submit = SubmitField('Post')
 
 class Organization(FlaskForm):
@@ -78,6 +80,7 @@ class Organization(FlaskForm):
     email = EmailField('Email', validators=[DataRequired(), Email()])
     content = TextAreaField('Post', validators=[DataRequired()])
     goal = TextAreaField('Goal', validators=[DataRequired()])
+    review = TextAreaField('Review', validators=[DataRequired()])
     submit = SubmitField('Organization')
 
 class CommentForm(FlaskForm):

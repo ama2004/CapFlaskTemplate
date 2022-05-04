@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
+<body style="background-color:#DAEBF7" >
 <div class="row">
-    <div class="col-4">
+    <div class="col-6">
         <h1 class="display-1">All Organizations</h1>
     </div>
     <div class="col">
@@ -13,91 +13,85 @@
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for organizations..">
 
-
+<br></br>
 {% if organizations %}
-    {% for organization in organizations %}
-        <div id="myTable" class="row border-bottom">
-            <div class="col-2">
-                {% if loop.index == 1 %}
-                <h3 class="display-9">Date</h3>
-                {% endif %}
-
-                <a href="/organization/{{organization.id}}">
-                    {{moment(organization.createdate).calendar()}}
-                </a>
-            </div>
-
-
-            <tr>
-                <div id="organizationName" class="col">
-                    {% if loop.index == 1 %}
-                        <h3 class="display-9">Name</h3>
-                    {% endif %}
-                    {{organization.name}}
-                </div>
-            </tr>
-            
-
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-9">Website</h3>
-                {% endif %}
-                {{organization.website}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-9">Address</h3>
-                {% endif %}
-                {{organization.address}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-9">Summary</h3>
-                {% endif %}
-                {{organization.summary}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-9">Keywords</h3>
-                {% endif %}
-                {{organization.keywords}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-9">Mentorship</h3>
-                {% endif %}
-                {{organization.mentorship}}
-            </div>
-        </div>
-    {% endfor %}
+{% for organization in organizations %}
+<div id="myTable" class="row border-bottom">
+    <div class="col-2">
+        {% if loop.index == 1 %}
+        <h3 class="display-9">Date</h3>
+        {% endif %}
+        <a href="/organization/{{organization.id}}">
+            {{moment(organization.createdate).calendar()}}
+        </a>
+    </div>
+    <div id="organizationName" class="col">
+        {% if loop.index == 1 %}
+        <h3 class="display-9">Name</h3>
+        {% endif %}
+        {{organization.name}}
+    </div>
+    <div class="col">
+        {% if loop.index == 1 %}
+        <h3 class="display-9">Website</h3>
+        {% endif %}
+        <a href="{{organization.website}}">Link to Organization</a>
+        <!-- {{organization.website}} -->
+    </div>
+    <div class="col">
+        {% if loop.index == 1 %}
+        <h3 class="display-9">Address</h3>
+        {% endif %}
+        {{organization.address}}
+    </div>
+    <div class="col">
+        {% if loop.index == 1 %}
+        <h3 class="display-9">Summary</h3>
+        {% endif %}
+        {{organization.summary}}
+    </div>
+    <div class="col">
+        {% if loop.index == 1 %}
+        <h3 class="display-9">Keywords</h3>
+        {% endif %}
+        {{organization.keywords}}
+    </div>
+    <div class="col">
+        {% if loop.index == 1 %}
+        <h3 class="display-9">Mentorship</h3>
+        {% endif %}
+        {{organization.mentorship}}
+    </div>
+</div>
+{% endfor %}
 {% else %}
-    <h1>No Organizations</h1>
-{% endif %}
+<h1>No Organizations</h1>
 
+{% endif %}
 
 <script>
     function myFunction() {
-      // Declare variables
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-    
-      // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("organizationName");
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("organizationName");
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
         }
-      }
     }
-  </script>
-
-
+</script>
+<br></br>
+</body>
 {% endblock %}

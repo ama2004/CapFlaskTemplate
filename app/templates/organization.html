@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
+<body style="background-color:#DAEBF7" >
 {% if organization %}
 
 {{moment(organization.createdate).calendar()}} by {{organization.author.username}}
@@ -27,9 +27,16 @@ modified {{moment(organization.modifydate).calendar()}}
     {{organization.website}}
     <br></br>
     {{organization.address}}
+    <br></br>
+    {{organization.summary}}
+    <br></br>
+    {{organization.keywords}}
+    <br></br>
+    {{organization.mentorship}}
 </p>
+
 {% else %}
 <h1 class="display-5">No Post</h1>
 {% endif %}
-
+</body>
 {% endblock %}
